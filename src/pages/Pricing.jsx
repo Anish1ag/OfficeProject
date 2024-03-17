@@ -1,7 +1,7 @@
 import { FaAngleDown } from "react-icons/fa6";
 function Pricing() {
   return (
-    <div className="bg-custom-dark text-white">
+    <div className=" bg-custom-dark text-white">
       <div className="flex text-2xl font-bold ml-16">
         Our Top Selling Products🔥
       </div>

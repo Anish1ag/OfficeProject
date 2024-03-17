@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 function Navbar() {
   const location = useLocation();
   return (
-    <div className="bg-custom-dark text-white text-opacity-100">
+    <div className="bg-custom-dark  overflow-x-auto text-white text-opacity-100">
       <header className="white-gray-600 body-font">
         <div className="container mx-auto flex inline flex-wrap p-5 flex-col md:flex-row items-center">
           <div>
@@ -45,6 +45,12 @@ function Navbar() {
               >
                 Resources
               </NavLink>
+              <NavLink
+                to="/contact"
+                className="mr-5 hover:text-gray-400 hover:cursor-pointer"
+              >
+                Contact Us
+              </NavLink>
               {location.pathname !== "/" && (
                 <NavLink
                   to="/"
@@ -55,13 +61,16 @@ function Navbar() {
               )}
               <NavLink
                 to="/login"
-                className=" hover:text-gray-400 ml-64 hover:cursor-pointer"
+                className=" hover:text-gray-400 ml-40 hover:cursor-pointer"
               >
                 Log in
               </NavLink>
-              <a className="mr-5 ml-5 hover:text-gray-400 border-2 pt-1 pr-3 pb-1 pl-3 rounded-md hover:cursor-pointer">
+              <NavLink
+                to="/signup"
+                className="mr-5 ml-5 hover:text-gray-400 border-2 pt-1 pr-3 pb-1 pl-3 rounded-md hover:cursor-pointer"
+              >
                 Sign up
-              </a>
+              </NavLink>
             </nav>
           </div>
         </div>

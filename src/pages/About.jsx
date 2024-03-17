@@ -1,7 +1,7 @@
 import { FaAngleRight } from "react-icons/fa6";
 function About() {
   return (
-    <div className="bg-custom-dark">
+    <div className=" bg-custom-dark">
       <div className=" flex text-white">
         <div className="flex flex-col w-1/2">
           <div className="flex justify-center items-center text-6xl font-bold h-1/2">

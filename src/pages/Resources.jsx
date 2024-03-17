@@ -1,7 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { API_URL, CAT_FACT } from "../config/EnvironmentVariables";
+import GlobalContext from "../GlobalContext";
 
 function Resources() {
+  const contextValues = useContext(GlobalContext);
+  const { theme, setTheme } = contextValues;
+  const { backgroundColor, color } = theme;
+  console.log(theme);
   const [data, setData] = useState("");
   const [back, setBack] = useState("");
   const [bike, setBike] = useState("");
@@ -10,9 +16,21 @@ function Resources() {
   const [address, setAddress] = useState("");
   const [post, setPost] = useState("");
   const [salary, setSalary] = useState("");
+  const changeStyle = (e) => {
+    const value = e.target.value;
+    if (value === "Theme1") {
+      setTheme({ backgroundColor: "black", color: "white" });
+    } else if (value === "Theme2") {
+      setTheme({ backgroundColor: "blue", color: "white" });
+    } else if (value === "Theme3") {
+      setTheme({ backgroundColor: "yellow", color: "black" });
+    } else {
+      setTheme({ backgroundColor: "#031a1b", color: "white" });
+    }
+  };
   async function asynchronous() {
     try {
-      let a = await axios.get("https://catfact.ninja/fact");
+      let a = await axios.get(`${CAT_FACT}fact`);
       setData(a.data);
       console.log(a);
     } catch (error) {
@@ -32,7 +50,7 @@ function Resources() {
   }, []);
 
   async function backend() {
-    let b = await axios.get("http://localhost:5002/backend");
+    let b = await axios.get(`${API_URL}backend`);
     setBack(b.data);
     console.log(b.data);
   }
@@ -62,7 +80,17 @@ function Resources() {
   }
 
   return (
-    <div className="bg-custom-dark text-white ">
+    <div
+      style={{ backgroundColor: backgroundColor, color: color }}
+      className=" bg-custom-dark text-white "
+    >
+      <label>Select Theme</label>
+      <select onChange={changeStyle} className="text-black" name="" id="">
+        <option value=""></option>
+        <option value="Theme1">Theme1</option>
+        <option value="Theme2">Theme2</option>
+        <option value="Theme3">Theme3</option>
+      </select>
       <div className="flex">
         <div className="flex flex-col justify-center items-center w-1/2">
           <div>{data.fact}</div>

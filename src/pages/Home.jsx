@@ -3,7 +3,7 @@ import { IoIosLink } from "react-icons/io";
 
 function Home() {
   return (
-    <div className="bg-custom-dark text-white  flex">
+    <div className=" bg-custom-dark text-white  flex">
       <div className=" ml-16 h-screen font-serif flex justify-center flex-col ">
         <div className="text-6xl ">
           Intrust is Short

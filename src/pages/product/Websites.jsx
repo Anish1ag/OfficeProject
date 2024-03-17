@@ -1,6 +1,32 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 function Websites() {
+  const [name, setName] = useState("");
+  const params = useParams();
+  console.log(params.name);
+  async function website() {
+    try {
+      const data = await axios({
+        method: "get",
+        url: `http://localhost:5002/website/${params.name}`,
+      });
+      setName(data.data);
+      console.log(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    website();
+  }, []);
   return (
     <>
+      <div>
+        {name.title} <br />
+        {name.status}
+      </div>
       <div className="flex mt-2 ">
         <div className=" border-2 ml-3">
           <img src="https://picsum.photos/200/300" alt="" />
